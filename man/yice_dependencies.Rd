@@ -4,7 +4,7 @@
 \alias{yice_dependencies}
 \title{Load Yice Analytics UI dependencies}
 \usage{
-yice_dependencies(mode = getOption("yayice.mode", "light"))
+yice_dependencies(mode = getOption("yayice.mode", "dark"))
 }
 \arguments{
 \item{mode}{Either \code{"light"} or \code{"dark"}.}
@@ -14,4 +14,8 @@ HTML dependencies and Yice UI configuration.
 }
 \description{
 Adds the visual design system used by yayice UI components.
+}
+\details{
+Colours are generated from the central \code{yice_colors()}
+palette and exposed to CSS as custom properties.
 }

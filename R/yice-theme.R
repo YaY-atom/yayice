@@ -2,6 +2,8 @@
 #'
 #' Creates the base Bootstrap theme for Yice Analytics applications.
 #'
+#' Colours are derived from the central `yice_colors()` palette.
+#'
 #' @param mode UI colour mode. Either `"light"` or `"dark"`.
 #' @param primary Optional primary brand colour.
 #'
@@ -13,40 +15,89 @@ yice_theme <- function(
     primary = NULL
 ) {
 
-  mode <- match.arg(mode, c("light", "dark"))
+  mode <- match.arg(
+    mode,
+    c("light", "dark")
+  )
 
   col <- yice_colors()
 
+
+  # ---------------------------------------------------------
+  # Primary colour
+  # ---------------------------------------------------------
+
   if (is.null(primary)) {
-    primary <- col[["primary"]]
+    primary <- unname(col[["primary"]])
   }
+
+
+  # ---------------------------------------------------------
+  # Mode colours
+  # ---------------------------------------------------------
 
   if (mode == "light") {
 
-    bg <- "#F6F7FB"
-    fg <- "#17181C"
+    bg <- unname(
+      col[["background"]]
+    )
+
+    fg <- unname(
+      col[["text"]]
+    )
 
   } else {
 
-    bg <- "#07090F"
-    fg <- "#F5F7FF"
+    bg <- unname(
+      col[["background_dark"]]
+    )
 
+    fg <- unname(
+      col[["text_dark"]]
+    )
   }
 
+
+  # ---------------------------------------------------------
+  # Bootstrap theme
+  # ---------------------------------------------------------
+
   theme <- bslib::bs_theme(
+
     version = 5,
+
     preset = "bootstrap",
 
     bg = bg,
+
     fg = fg,
 
     primary = primary,
-    secondary = col[["text_muted"]],
 
-    success = col[["success"]],
-    warning = col[["warning"]],
-    danger = col[["danger"]],
-    info = col[["info"]],
+    secondary = unname(
+      col[["text_muted"]]
+    ),
+
+    success = unname(
+      col[["success"]]
+    ),
+
+    warning = unname(
+      col[["warning"]]
+    ),
+
+    danger = unname(
+      col[["danger"]]
+    ),
+
+    info = unname(
+      col[["info"]]
+    ),
+
+
+    # -------------------------------------------------------
+    # Fonts
+    # -------------------------------------------------------
 
     base_font = bslib::font_collection(
       "Inter",
@@ -69,12 +120,24 @@ yice_theme <- function(
       "monospace"
     ),
 
-    "border-radius" = "0.75rem",
-    "border-radius-sm" = "0.5rem",
-    "border-radius-lg" = "1rem"
+
+    # -------------------------------------------------------
+    # Bootstrap geometry
+    # -------------------------------------------------------
+
+    "border-radius" = "0.80rem",
+
+    "border-radius-sm" = "0.55rem",
+
+    "border-radius-lg" = "1.05rem"
   )
 
-  attr(theme, "yice_mode") <- mode
+
+  attr(
+    theme,
+    "yice_mode"
+  ) <- mode
+
 
   theme
 }

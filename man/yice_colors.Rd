@@ -7,8 +7,12 @@
 yice_colors()
 }
 \value{
-A named character vector.
+A named character vector of hexadecimal colours.
 }
 \description{
 Central colour definitions used throughout the yayice UI system.
+}
+\details{
+This function acts as the single source of truth for Yice Analytics
+brand, surface, text, semantic, and gradient colours.
 }

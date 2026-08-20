@@ -5,154 +5,118 @@
 
 
 /* =========================================================
-   01. DESIGN TOKENS
+   01. INTERNAL TOKENS
    ========================================================= */
 
 :root {
 
-  /* Brand */
-  --yice-primary: #003CFF;
-  --yice-primary-dark: #002BCC;
-  --yice-primary-light: #5477FF;
-
-  --yice-accent: #42FCFF;
-  --yice-accent-alt: #D535D9;
-
-
-  /* Semantic */
-  --yice-success: #00C000;
-  --yice-warning: #FCA600;
-  --yice-danger: #FF3B45;
-  --yice-info: #42FCFF;
-
-
-  /* Light mode */
-  --yice-background: #F6F7FB;
-
-  --yice-surface:
-    rgba(255, 255, 255, 0.88);
-
-  --yice-surface-solid: #FFFFFF;
-
-  --yice-surface-soft: #F9FAFC;
-
-
-  /* Text */
-  --yice-text: #17181C;
-  --yice-text-soft: #555B66;
-  --yice-text-muted: #828895;
-
-
-  /* Structure */
-  --yice-border:
-    rgba(25, 30, 40, 0.09);
-
-  --yice-border-strong:
-    rgba(25, 30, 40, 0.15);
-
-
-  /* Radius */
-  --yice-radius-xs: 0.35rem;
   --yice-radius-sm: 0.55rem;
   --yice-radius-md: 0.80rem;
   --yice-radius-lg: 1.05rem;
   --yice-radius-xl: 1.40rem;
 
-
-  /* Shadows */
-  --yice-shadow-sm:
-    0 3px 10px rgba(12, 18, 30, 0.05);
-
-  --yice-shadow-md:
-    0 10px 30px rgba(12, 18, 30, 0.08);
-
-
-  /* Motion */
   --yice-ease:
     cubic-bezier(0.22, 1, 0.36, 1);
 
-  --yice-ease-soft:
-    cubic-bezier(0.4, 0, 0.2, 1);
-
-  --yice-fast: 140ms;
-  --yice-normal: 220ms;
-  --yice-slow: 420ms;
+  --yice-fast: 150ms;
+  --yice-normal: 240ms;
+  --yice-slow: 500ms;
 }
 
 
 /* =========================================================
-   02. DARK MODE
+   02. LIGHT MODE
+   ========================================================= */
+
+[data-yice-theme="light"] {
+
+  --yice-background:
+    var(--yice-light-background);
+
+  --yice-surface:
+    rgba(255, 255, 255, 0.84);
+
+  --yice-surface-solid:
+    var(--yice-light-surface);
+
+  --yice-text:
+    var(--yice-light-text);
+
+  --yice-text-soft:
+    var(--yice-light-text-soft);
+
+  --yice-text-muted:
+    var(--yice-light-text-muted);
+
+  --yice-border:
+    var(--yice-light-border);
+
+  --yice-shadow:
+    0 8px 30px rgba(20, 30, 55, 0.08);
+
+  --yice-shadow-hover:
+    0 18px 50px rgba(20, 30, 55, 0.15);
+}
+
+
+/* =========================================================
+   03. DARK MODE
    ========================================================= */
 
 [data-yice-theme="dark"] {
 
-  --yice-background: #07090F;
+  --yice-background:
+    var(--yice-dark-background);
 
   --yice-surface:
-    rgba(15, 19, 29, 0.82);
+    rgba(15, 19, 29, 0.72);
 
   --yice-surface-solid:
-    #0F131D;
-
-  --yice-surface-soft:
-    #121722;
+    var(--yice-dark-surface);
 
   --yice-text:
-    #F5F7FF;
+    var(--yice-dark-text);
 
   --yice-text-soft:
-    #C2C8D6;
+    var(--yice-dark-text-soft);
 
   --yice-text-muted:
-    #818A9D;
+    var(--yice-dark-text-muted);
 
   --yice-border:
-    rgba(120, 150, 210, 0.13);
+    var(--yice-dark-border);
 
-  --yice-border-strong:
-    rgba(120, 160, 230, 0.22);
+  --yice-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.32);
 
-  --yice-shadow-sm:
-    0 6px 20px
-    rgba(0, 0, 0, 0.28);
-
-  --yice-shadow-md:
-    0 16px 45px
-    rgba(0, 0, 0, 0.38);
+  --yice-shadow-hover:
+    0 20px 60px rgba(0, 0, 0, 0.48);
 }
 
 
 /* =========================================================
-   03. DOCUMENT
+   04. RESET / BSLIB
    ========================================================= */
 
-html {
-
-  scroll-behavior:
-    smooth;
-}
-
-
+html,
 body {
 
-  position:
-    relative;
+  width: 100%;
+  min-height: 100%;
 
-  min-height:
-    100vh;
-
-  overflow-x:
-    hidden;
+  margin: 0;
 
   color:
     var(--yice-text);
 
   background:
-    var(--yice-background);
+    var(--yice-background) !important;
+}
 
-  font-feature-settings:
-    "kern" 1,
-    "liga" 1;
+
+body {
+
+  overflow-x: hidden;
 
   -webkit-font-smoothing:
     antialiased;
@@ -162,57 +126,144 @@ body {
 }
 
 
+/*
+   We deliberately remove bslib's visible page background.
+*/
+
+.html-fill-container,
+.bslib-page-fill {
+
+  background:
+    transparent !important;
+
+  background-color:
+    transparent !important;
+}
+
+
 /* =========================================================
-   04. AMBIENT NEON BACKGROUND
+   05. YICE PAGE
    ========================================================= */
 
-body::before {
+.yice-page {
 
-  content: "";
+  position: relative;
 
-  position:
-    fixed;
+  width: 100%;
 
-  inset:
-    0;
+  min-height: 100vh;
 
-  z-index:
-    0;
+  flex:
+    1 1 auto;
 
-  pointer-events:
-    none;
+  overflow: hidden;
+
+  isolation: isolate;
+
+  background:
+    var(--yice-background);
+}
+
+
+/* =========================================================
+   06. YICE BACKGROUND
+   ========================================================= */
+
+.yice-page-background {
+
+  position: fixed;
+
+  inset: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  z-index: 0;
 
   background:
 
     radial-gradient(
-      circle 420px at 12% 16%,
-      rgba(0, 60, 255, 0.34),
-      rgba(0, 60, 255, 0.12) 35%,
-      transparent 72%
+      circle 800px at 0% 0%,
+      rgba(0, 60, 255, 0.28),
+      transparent 65%
     ),
 
     radial-gradient(
-      circle 380px at 88% 22%,
-      rgba(66, 252, 255, 0.20),
-      rgba(66, 252, 255, 0.07) 40%,
-      transparent 72%
+      circle 700px at 100% 5%,
+      rgba(66, 252, 255, 0.18),
+      transparent 65%
     ),
 
     radial-gradient(
-      circle 460px at 68% 88%,
+      circle 850px at 85% 100%,
       rgba(213, 53, 217, 0.18),
-      rgba(213, 53, 217, 0.055) 42%,
+      transparent 68%
+    ),
+
+    var(--yice-background);
+}
+
+
+/* =========================================================
+   07. LIGHT ORBS
+   ========================================================= */
+
+.yice-light {
+
+  position: absolute;
+
+  display: block;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  will-change:
+    transform,
+    opacity;
+
+  transform:
+    translateZ(0);
+}
+
+
+/* ---------------------------------------------------------
+   BLUE
+   --------------------------------------------------------- */
+
+.yice-light-blue {
+
+  width: 700px;
+  height: 700px;
+
+  left: -300px;
+  top: -240px;
+
+  background:
+
+    radial-gradient(
+      circle,
+
+      rgba(0, 60, 255, 0.90) 0%,
+
+      rgba(0, 60, 255, 0.52) 22%,
+
+      rgba(0, 60, 255, 0.20) 45%,
+
       transparent 72%
     );
 
   filter:
-    blur(18px);
+    blur(38px);
 
-  opacity:
-    0.95;
+  opacity: 0.80;
 
   animation:
-    yice-ambient-drift
+    yice-blue-drift
     14s
     ease-in-out
     infinite
@@ -220,68 +271,147 @@ body::before {
 }
 
 
-body::after {
+/* ---------------------------------------------------------
+   CYAN
+   --------------------------------------------------------- */
 
-  content: "";
+.yice-light-cyan {
 
-  position:
-    fixed;
+  width: 650px;
+  height: 650px;
 
-  width:
-    34rem;
-
-  height:
-    34rem;
-
-  left:
-    42%;
-
-  top:
-    18%;
-
-  z-index:
-    0;
-
-  pointer-events:
-    none;
-
-  border-radius:
-    50%;
+  right: -220px;
+  top: 0;
 
   background:
+
     radial-gradient(
       circle,
-      rgba(0, 60, 255, 0.11),
-      rgba(66, 252, 255, 0.045) 35%,
-      transparent 70%
+
+      rgba(66, 252, 255, 0.82) 0%,
+
+      rgba(66, 252, 255, 0.46) 22%,
+
+      rgba(66, 252, 255, 0.17) 45%,
+
+      transparent 72%
     );
 
   filter:
-    blur(35px);
+    blur(42px);
+
+  opacity: 0.78;
 
   animation:
-    yice-floating-glow
-    18s
-    var(--yice-ease)
+    yice-cyan-drift
+    17s
+    ease-in-out
     infinite
     alternate;
 }
 
 
-/* Keep Shiny content above ambient lights */
+/* ---------------------------------------------------------
+   PURPLE
+   --------------------------------------------------------- */
 
-body > * {
+.yice-light-purple {
 
-  position:
-    relative;
+  width: 780px;
+  height: 780px;
 
-  z-index:
-    1;
+  right: 4%;
+  bottom: -420px;
+
+  background:
+
+    radial-gradient(
+      circle,
+
+      rgba(213, 53, 217, 0.78) 0%,
+
+      rgba(213, 53, 217, 0.42) 22%,
+
+      rgba(213, 53, 217, 0.16) 45%,
+
+      transparent 72%
+    );
+
+  filter:
+    blur(48px);
+
+  opacity: 0.72;
+
+  animation:
+    yice-purple-drift
+    20s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+
+/* ---------------------------------------------------------
+   CENTER
+   --------------------------------------------------------- */
+
+.yice-light-center {
+
+  width: 500px;
+  height: 500px;
+
+  left: 34%;
+  top: 30%;
+
+  background:
+
+    radial-gradient(
+      circle,
+
+      rgba(66, 252, 255, 0.19),
+
+      rgba(213, 53, 217, 0.11) 38%,
+
+      rgba(0, 60, 255, 0.06) 55%,
+
+      transparent 72%
+    );
+
+  filter:
+    blur(55px);
+
+  opacity: 0.75;
+
+  animation:
+    yice-center-drift
+    23s
+    ease-in-out
+    infinite
+    alternate;
 }
 
 
 /* =========================================================
-   05. TYPOGRAPHY
+   08. PAGE CONTENT
+   ========================================================= */
+
+.yice-page-content {
+
+  position: relative;
+
+  z-index: 10;
+
+  width: 100%;
+
+  min-height: 100vh;
+
+  margin:
+    0 auto;
+}
+
+
+/* =========================================================
+   09. TYPOGRAPHY
    ========================================================= */
 
 h1,
@@ -312,34 +442,57 @@ p {
 a {
 
   color:
-    var(--yice-primary);
+    var(--yice-cyan);
 
   text-decoration:
     none;
 
   transition:
+
     color
     var(--yice-fast)
-    var(--yice-ease-soft);
+    ease,
+
+    text-shadow
+    var(--yice-fast)
+    ease;
 }
 
 
 a:hover {
 
   color:
-    var(--yice-primary-light);
+    var(--yice-cyan-soft);
+
+  text-shadow:
+    0 0 14px
+    rgba(66, 252, 255, 0.32);
 }
 
 
+/* =========================================================
+   10. GLOW TITLE
+   ========================================================= */
+
 .yice-glow-title {
 
+  display:
+    inline-block;
+
   background:
+
     linear-gradient(
-      90deg,
-      var(--yice-primary),
-      #315FFF,
-      var(--yice-accent)
+      100deg,
+
+      var(--yice-gradient-start),
+
+      var(--yice-gradient-mid),
+
+      var(--yice-gradient-end)
     );
+
+  background-size:
+    200% auto;
 
   -webkit-background-clip:
     text;
@@ -350,26 +503,35 @@ a:hover {
   color:
     transparent;
 
-  text-shadow:
-    0 0 20px
-    rgba(0, 60, 255, 0.14);
+  -webkit-text-fill-color:
+    transparent;
+
+  filter:
+
+    drop-shadow(
+      0 0 14px rgba(66, 252, 255, 0.24)
+    );
+
+  animation:
+    yice-title-flow
+    6s
+    ease-in-out
+    infinite
+    alternate;
 }
 
 
 /* =========================================================
-   06. YICE CARD
+   11. CARD
    ========================================================= */
 
 .yice-card {
 
-  position:
-    relative;
+  position: relative;
 
-  isolation:
-    isolate;
+  isolation: isolate;
 
-  overflow:
-    hidden;
+  overflow: hidden;
 
   background:
     var(--yice-surface);
@@ -382,102 +544,100 @@ a:hover {
     var(--yice-radius-lg);
 
   box-shadow:
-    var(--yice-shadow-sm);
+    var(--yice-shadow);
 
   backdrop-filter:
-    blur(18px)
-    saturate(125%);
+    blur(22px)
+    saturate(145%);
 
   -webkit-backdrop-filter:
-    blur(18px)
-    saturate(125%);
+    blur(22px)
+    saturate(145%);
 
   transition:
-    transform
-    var(--yice-normal)
-    var(--yice-ease),
 
-    box-shadow
+    transform
     var(--yice-normal)
     var(--yice-ease),
 
     border-color
     var(--yice-normal)
-    var(--yice-ease);
+    ease,
+
+    box-shadow
+    var(--yice-normal)
+    ease;
 
   animation:
     yice-enter
-    var(--yice-slow)
+    500ms
     var(--yice-ease)
     both;
 }
 
 
-/* Neon accent line */
+/* =========================================================
+   12. CARD TOP NEON
+   ========================================================= */
 
 .yice-card::before {
 
   content: "";
 
-  position:
-    absolute;
+  position: absolute;
 
-  top:
-    0;
+  top: 0;
+  left: 0;
+  right: 0;
 
-  left:
-    0;
+  height: 2px;
 
-  right:
-    0;
-
-  height:
-    2px;
-
-  z-index:
-    2;
-
-  opacity:
-    0.9;
+  z-index: 4;
 
   background:
+
     linear-gradient(
       90deg,
-      var(--yice-primary),
-      var(--yice-accent)
+
+      var(--yice-gradient-start),
+
+      var(--yice-gradient-mid),
+
+      var(--yice-gradient-end),
+
+      var(--yice-gradient-mid),
+
+      var(--yice-gradient-start)
     );
 
-  transition:
-    opacity
-    var(--yice-normal)
-    var(--yice-ease),
+  background-size:
+    220% 100%;
 
-    box-shadow
-    var(--yice-normal)
-    var(--yice-ease);
+  animation:
+    yice-neon-line
+    5s
+    linear
+    infinite;
 }
 
 
-/* Internal card glow */
+/* =========================================================
+   13. CARD INTERNAL LIGHT
+   ========================================================= */
 
 .yice-card::after {
 
   content: "";
 
-  position:
-    absolute;
+  position: absolute;
 
-  width:
-    18rem;
+  width: 340px;
+  height: 340px;
 
-  height:
-    18rem;
+  top: -210px;
+  right: -160px;
 
-  top:
-    -11rem;
-
-  right:
-    -9rem;
+  z-index: -1;
 
   border-radius:
     50%;
@@ -485,27 +645,29 @@ a:hover {
   pointer-events:
     none;
 
-  z-index:
-    -1;
-
   background:
+
     radial-gradient(
       circle,
-      rgba(66, 252, 255, 0.12),
-      rgba(0, 60, 255, 0.07) 32%,
-      transparent 70%
+
+      rgba(66, 252, 255, 0.20),
+
+      rgba(213, 53, 217, 0.11) 40%,
+
+      transparent 72%
     );
 
   filter:
-    blur(8px);
+    blur(18px);
 
   opacity:
-    0.45;
+    0.48;
 
   transition:
+
     opacity
     var(--yice-normal)
-    var(--yice-ease),
+    ease,
 
     transform
     var(--yice-slow)
@@ -513,71 +675,74 @@ a:hover {
 }
 
 
-/* Hover */
+/* =========================================================
+   14. CARD HOVER
+   ========================================================= */
 
 .yice-card:hover {
 
   transform:
-    translateY(-5px)
-    scale(1.003);
+    translateY(-6px)
+    scale(1.004);
 
   border-color:
-    rgba(66, 252, 255, 0.34);
+    rgba(66, 252, 255, 0.48);
 
   box-shadow:
 
-    var(--yice-shadow-md),
-
-    0 0 0 1px
-    rgba(66, 252, 255, 0.08),
+    var(--yice-shadow-hover),
 
     0 0 18px
-    rgba(0, 60, 255, 0.18),
+    rgba(0, 60, 255, 0.22),
 
-    0 0 42px
-    rgba(66, 252, 255, 0.10),
+    0 0 38px
+    rgba(66, 252, 255, 0.18),
 
-    0 0 70px
-    rgba(213, 53, 217, 0.035);
+    0 0 60px
+    rgba(213, 53, 217, 0.13);
 }
 
 
 .yice-card:hover::before {
 
-  opacity:
-    1;
-
   box-shadow:
-    0 0 8px
-    rgba(0, 60, 255, 0.50),
 
-    0 0 18px
-    rgba(66, 252, 255, 0.28);
+    0 0 10px
+    rgba(0, 60, 255, 0.70),
+
+    0 0 20px
+    rgba(66, 252, 255, 0.55),
+
+    0 0 34px
+    rgba(213, 53, 217, 0.32);
 }
 
 
 .yice-card:hover::after {
 
-  opacity:
-    0.95;
+  opacity: 1;
 
   transform:
-    scale(1.20);
+    scale(1.30)
+    translate(-10px, 20px);
 }
 
 
-/* Header */
+/* =========================================================
+   15. CARD HEADER / BODY
+   ========================================================= */
 
 .yice-card .card-header {
 
-  position:
-    relative;
+  position: relative;
 
-  z-index:
-    1;
+  z-index: 2;
 
   padding:
     1.15rem 1.35rem;
+
+  color:
+    var(--yice-text);
 
   background:
     transparent;
@@ -588,82 +753,16 @@ a:hover {
 }
 
 
-/* Body */
-
 .yice-card .card-body {
 
-  position:
-    relative;
+  position: relative;
 
-  z-index:
-    1;
+  z-index: 2;
 
   padding:
     1.35rem;
 }
 
-
-/* Moving light reflection */
-
-.yice-card .card-body::after {
-
-  content: "";
-
-  position:
-    absolute;
-
-  top:
-    -30%;
-
-  left:
-    -40%;
-
-  width:
-    30%;
-
-  height:
-    160%;
-
-  pointer-events:
-    none;
-
-  opacity:
-    0;
-
-  background:
-    linear-gradient(
-      105deg,
-      transparent,
-      rgba(255, 255, 255, 0.24),
-      rgba(66, 252, 255, 0.08),
-      transparent
-    );
-
-  transform:
-    rotate(8deg);
-
-  transition:
-    left
-    650ms
-    var(--yice-ease),
-
-    opacity
-    250ms
-    ease;
-}
-
-
-.yice-card:hover .card-body::after {
-
-  left:
-    115%;
-
-  opacity:
-    0.75;
-}
-
-
-/* Title */
 
 .yice-card-title {
 
@@ -675,16 +774,8 @@ a:hover {
 
   font-weight:
     700;
-
-  line-height:
-    1.25;
-
-  letter-spacing:
-    -0.02em;
 }
 
-
-/* Description */
 
 .yice-card-description {
 
@@ -696,161 +787,167 @@ a:hover {
 
   font-size:
     0.875rem;
-
-  line-height:
-    1.5;
 }
 
 
 /* =========================================================
-   07. BUTTONS
+   16. CARD LIGHT SWEEP
+   ========================================================= */
+
+.yice-card .card-body::after {
+
+  content: "";
+
+  position: absolute;
+
+  top: -40%;
+  left: -45%;
+
+  width: 35%;
+  height: 180%;
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  background:
+
+    linear-gradient(
+      110deg,
+
+      transparent,
+
+      rgba(66, 252, 255, 0.05),
+
+      rgba(255, 255, 255, 0.24),
+
+      rgba(213, 53, 217, 0.13),
+
+      transparent
+    );
+
+  transform:
+    rotate(7deg);
+
+  transition:
+
+    left
+    750ms
+    var(--yice-ease),
+
+    opacity
+    220ms
+    ease;
+}
+
+
+.yice-card:hover .card-body::after {
+
+  left: 120%;
+
+  opacity: 1;
+}
+
+
+/* =========================================================
+   17. BUTTONS
    ========================================================= */
 
 .btn {
 
-  position:
-    relative;
-
   border-radius:
     var(--yice-radius-md);
-
-  padding:
-    0.58rem 1rem;
 
   font-weight:
     600;
 
-  letter-spacing:
-    -0.01em;
-
   transition:
+
     transform
     var(--yice-fast)
-    var(--yice-ease),
+    ease,
 
     box-shadow
     var(--yice-normal)
-    var(--yice-ease),
-
-    border-color
-    var(--yice-fast)
-    var(--yice-ease);
-}
-
-
-.btn:hover {
-
-  transform:
-    translateY(-1px);
-}
-
-
-.btn:active {
-
-  transform:
-    translateY(0)
-    scale(0.985);
+    ease;
 }
 
 
 .btn-primary {
 
-  overflow:
-    hidden;
-
-  isolation:
-    isolate;
-
   color:
-    #FFFFFF;
+    white;
 
   border:
     1px solid
-    rgba(80, 120, 255, 0.45);
+    rgba(66, 252, 255, 0.30);
 
   background:
+
     linear-gradient(
-      135deg,
-      var(--yice-primary) 0%,
-      #174FFF 60%,
-      #376AFF 100%
+      120deg,
+
+      var(--yice-primary),
+
+      var(--yice-primary-light),
+
+      var(--yice-purple)
     );
+
+  background-size:
+    180% 100%;
 
   box-shadow:
-    0 5px 16px
-    rgba(0, 60, 255, 0.20);
-}
 
-
-.btn-primary::before {
-
-  content: "";
-
-  position:
-    absolute;
-
-  inset:
-    0;
-
-  z-index:
-    -1;
-
-  opacity:
-    0;
-
-  background:
-    radial-gradient(
-      circle at 50% 120%,
-      rgba(66, 252, 255, 0.28),
-      transparent 60%
-    );
+    0 5px 18px
+    rgba(0, 60, 255, 0.30);
 
   transition:
-    opacity
+
+    transform
+    var(--yice-fast)
+    ease,
+
+    box-shadow
     var(--yice-normal)
-    var(--yice-ease);
+    ease,
+
+    background-position
+    var(--yice-slow)
+    ease;
 }
 
 
 .btn-primary:hover {
 
   color:
-    #FFFFFF;
+    white;
 
   transform:
     translateY(-2px);
 
-  border-color:
-    rgba(66, 252, 255, 0.55);
+  background-position:
+    100% 0;
 
   box-shadow:
-    0 7px 20px
-    rgba(0, 60, 255, 0.26),
 
-    0 0 16px
-    rgba(66, 252, 255, 0.16),
+    0 8px 24px
+    rgba(0, 60, 255, 0.36),
 
-    0 0 34px
-    rgba(0, 60, 255, 0.10);
-}
+    0 0 20px
+    rgba(66, 252, 255, 0.28),
 
-
-.btn-primary:hover::before {
-
-  opacity:
-    1;
+    0 0 38px
+    rgba(213, 53, 217, 0.20);
 }
 
 
 /* =========================================================
-   08. INPUTS
+   18. INPUTS
    ========================================================= */
 
 .form-control,
 .form-select {
-
-  min-height:
-    2.55rem;
 
   color:
     var(--yice-text);
@@ -860,26 +957,20 @@ a:hover {
 
   border:
     1px solid
-    var(--yice-border-strong);
+    var(--yice-border);
 
   border-radius:
     var(--yice-radius-md);
 
-  box-shadow:
-    none;
-
   transition:
+
     border-color
     var(--yice-fast)
-    var(--yice-ease),
+    ease,
 
     box-shadow
-    var(--yice-fast)
-    var(--yice-ease),
-
-    background-color
-    var(--yice-fast)
-    var(--yice-ease);
+    var(--yice-normal)
+    ease;
 }
 
 
@@ -887,7 +978,7 @@ a:hover {
 .form-select:hover {
 
   border-color:
-    rgba(0, 60, 255, 0.28);
+    rgba(213, 53, 217, 0.38);
 }
 
 
@@ -901,38 +992,23 @@ a:hover {
     var(--yice-surface-solid);
 
   border-color:
-    rgba(66, 252, 255, 0.72);
+    var(--yice-cyan);
 
   box-shadow:
-    0 0 0 0.18rem
-    rgba(0, 60, 255, 0.08),
 
-    0 0 12px
-    rgba(66, 252, 255, 0.13),
+    0 0 0 0.16rem
+    rgba(66, 252, 255, 0.08),
 
-    0 0 24px
-    rgba(0, 60, 255, 0.07);
-}
+    0 0 16px
+    rgba(66, 252, 255, 0.26),
 
-
-/* Labels */
-
-.form-label,
-.control-label {
-
-  color:
-    var(--yice-text-soft);
-
-  font-size:
-    0.875rem;
-
-  font-weight:
-    600;
+    0 0 30px
+    rgba(213, 53, 217, 0.15);
 }
 
 
 /* =========================================================
-   09. TABS
+   19. TABS
    ========================================================= */
 
 .nav-tabs {
@@ -945,8 +1021,7 @@ a:hover {
 
 .nav-tabs .nav-link {
 
-  position:
-    relative;
+  position: relative;
 
   color:
     var(--yice-text-muted);
@@ -959,77 +1034,25 @@ a:hover {
 
   font-weight:
     600;
-
-  padding:
-    0.75rem 1rem;
-
-  transition:
-    color
-    var(--yice-fast)
-    var(--yice-ease),
-
-    text-shadow
-    var(--yice-fast)
-    var(--yice-ease);
-}
-
-
-.nav-tabs .nav-link::after {
-
-  content: "";
-
-  position:
-    absolute;
-
-  left:
-    50%;
-
-  right:
-    50%;
-
-  bottom:
-    -1px;
-
-  height:
-    2px;
-
-  background:
-    linear-gradient(
-      90deg,
-      var(--yice-primary),
-      var(--yice-accent)
-    );
-
-  transition:
-    left
-    var(--yice-normal)
-    var(--yice-ease),
-
-    right
-    var(--yice-normal)
-    var(--yice-ease),
-
-    box-shadow
-    var(--yice-normal)
-    var(--yice-ease);
 }
 
 
 .nav-tabs .nav-link:hover {
 
   color:
-    var(--yice-primary-light);
+    var(--yice-cyan);
 
   text-shadow:
+
     0 0 12px
-    rgba(0, 60, 255, 0.18);
+    rgba(66, 252, 255, 0.35);
 }
 
 
 .nav-tabs .nav-link.active {
 
   color:
-    var(--yice-accent);
+    var(--yice-cyan);
 
   background:
     transparent;
@@ -1039,78 +1062,63 @@ a:hover {
 }
 
 
-.nav-tabs .nav-link.active::after {
+.nav-tabs .nav-link::after {
 
-  left:
-    0.7rem;
+  content: "";
 
-  right:
-    0.7rem;
+  position: absolute;
 
-  box-shadow:
-    0 0 7px
-    rgba(0, 60, 255, 0.55),
+  left: 50%;
+  right: 50%;
 
-    0 0 14px
-    rgba(66, 252, 255, 0.35);
-}
+  bottom: -1px;
 
+  height: 2px;
 
-/* =========================================================
-   10. TABLES
-   ========================================================= */
+  background:
 
-.table {
+    linear-gradient(
+      90deg,
 
-  --bs-table-bg:
-    transparent;
+      var(--yice-gradient-start),
 
-  color:
-    var(--yice-text);
-}
+      var(--yice-gradient-mid),
 
-
-.table > thead {
-
-  color:
-    var(--yice-text-muted);
-
-  font-size:
-    0.80rem;
-
-  text-transform:
-    uppercase;
-
-  letter-spacing:
-    0.04em;
-}
-
-
-.table > :not(caption) > * > * {
-
-  border-bottom-color:
-    var(--yice-border);
-}
-
-
-.table > tbody > tr {
+      var(--yice-gradient-end)
+    );
 
   transition:
-    background-color
-    var(--yice-fast)
+
+    left
+    var(--yice-normal)
+    var(--yice-ease),
+
+    right
+    var(--yice-normal)
     var(--yice-ease);
 }
 
 
-.table > tbody > tr:hover {
+.nav-tabs .nav-link.active::after {
 
-  background:
-    rgba(66, 252, 255, 0.035);
+  left: 0.7rem;
+  right: 0.7rem;
+
+  box-shadow:
+
+    0 0 8px
+    rgba(0, 60, 255, 0.70),
+
+    0 0 16px
+    rgba(66, 252, 255, 0.58),
+
+    0 0 28px
+    rgba(213, 53, 217, 0.35);
 }
 
 
 /* =========================================================
-   11. STATUS
+   20. STATUS
    ========================================================= */
 
 .yice-status {
@@ -1123,13 +1131,13 @@ a:hover {
 
   gap:
     0.45rem;
+
+  color:
+    var(--yice-text-soft);
 }
 
 
 .yice-status-dot {
-
-  display:
-    inline-block;
 
   width:
     0.55rem;
@@ -1141,14 +1149,15 @@ a:hover {
     50%;
 
   background:
-    var(--yice-accent);
+    var(--yice-cyan);
 
   box-shadow:
-    0 0 7px
-    rgba(66, 252, 255, 0.55),
 
-    0 0 16px
-    rgba(66, 252, 255, 0.25);
+    0 0 8px
+    var(--yice-cyan),
+
+    0 0 18px
+    rgba(66, 252, 255, 0.50);
 
   animation:
     yice-status-pulse
@@ -1159,96 +1168,14 @@ a:hover {
 
 
 /* =========================================================
-   12. SELECTION
-   ========================================================= */
-
-::selection {
-
-  color:
-    var(--yice-text);
-
-  background:
-    rgba(66, 252, 255, 0.30);
-}
-
-
-/* =========================================================
-   13. SCROLLBAR
-   ========================================================= */
-
-::-webkit-scrollbar {
-
-  width:
-    10px;
-
-  height:
-    10px;
-}
-
-
-::-webkit-scrollbar-track {
-
-  background:
-    transparent;
-}
-
-
-::-webkit-scrollbar-thumb {
-
-  background:
-    rgba(90, 98, 112, 0.25);
-
-  border:
-    3px solid
-    transparent;
-
-  border-radius:
-    999px;
-
-  background-clip:
-    padding-box;
-}
-
-
-::-webkit-scrollbar-thumb:hover {
-
-  background:
-    rgba(66, 252, 255, 0.35);
-
-  border:
-    3px solid
-    transparent;
-
-  background-clip:
-    padding-box;
-}
-
-
-/* =========================================================
-   14. FOCUS
-   ========================================================= */
-
-:focus-visible {
-
-  outline:
-    2px solid
-    rgba(66, 252, 255, 0.80);
-
-  outline-offset:
-    3px;
-}
-
-
-/* =========================================================
-   15. ANIMATIONS
+   21. ANIMATIONS
    ========================================================= */
 
 @keyframes yice-enter {
 
   from {
 
-    opacity:
-      0;
+    opacity: 0;
 
     transform:
       translateY(12px)
@@ -1257,12 +1184,39 @@ a:hover {
 
   to {
 
-    opacity:
-      1;
+    opacity: 1;
 
     transform:
       translateY(0)
       scale(1);
+  }
+}
+
+
+@keyframes yice-title-flow {
+
+  from {
+    background-position:
+      0% center;
+  }
+
+  to {
+    background-position:
+      100% center;
+  }
+}
+
+
+@keyframes yice-neon-line {
+
+  from {
+    background-position:
+      0% center;
+  }
+
+  to {
+    background-position:
+      220% center;
   }
 }
 
@@ -1272,84 +1226,103 @@ a:hover {
   0%,
   100% {
 
-    opacity:
-      0.65;
+    opacity: 0.60;
 
     transform:
-      scale(0.90);
+      scale(0.88);
   }
 
   50% {
 
-    opacity:
-      1;
+    opacity: 1;
 
     transform:
-      scale(1.08);
-  }
-}
-
-
-@keyframes yice-ambient-drift {
-
-  0% {
-
-    transform:
-      scale(1)
-      translate3d(0, 0, 0);
-  }
-
-  100% {
-
-    transform:
-      scale(1.08)
-      translate3d(1.5%, -1%, 0);
-  }
-}
-
-
-@keyframes yice-floating-glow {
-
-  0% {
-
-    transform:
-      translate3d(-10%, 0, 0)
-      scale(0.90);
-
-    opacity:
-      0.50;
-  }
-
-  50% {
-
-    opacity:
-      0.90;
-  }
-
-  100% {
-
-    transform:
-      translate3d(18%, 10%, 0)
       scale(1.12);
+  }
+}
 
-    opacity:
-      0.65;
+
+@keyframes yice-blue-drift {
+
+  from {
+
+    transform:
+      translate3d(0, 0, 0)
+      scale(1);
+  }
+
+  to {
+
+    transform:
+      translate3d(120px, 80px, 0)
+      scale(1.16);
+  }
+}
+
+
+@keyframes yice-cyan-drift {
+
+  from {
+
+    transform:
+      translate3d(0, 0, 0)
+      scale(0.96);
+  }
+
+  to {
+
+    transform:
+      translate3d(-150px, 110px, 0)
+      scale(1.18);
+  }
+}
+
+
+@keyframes yice-purple-drift {
+
+  from {
+
+    transform:
+      translate3d(0, 0, 0)
+      scale(1);
+  }
+
+  to {
+
+    transform:
+      translate3d(-130px, -100px, 0)
+      scale(1.22);
+  }
+}
+
+
+@keyframes yice-center-drift {
+
+  from {
+
+    transform:
+      translate3d(-60px, 0, 0)
+      scale(0.90);
+
+    opacity: 0.50;
+  }
+
+  to {
+
+    transform:
+      translate3d(130px, 90px, 0)
+      scale(1.25);
+
+    opacity: 0.90;
   }
 }
 
 
 /* =========================================================
-   16. REDUCED MOTION
+   22. REDUCED MOTION
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-
-  html {
-
-    scroll-behavior:
-      auto;
-  }
-
 
   *,
   *::before,
@@ -1363,8 +1336,5 @@ a:hover {
 
     transition-duration:
       0.01ms !important;
-
-    scroll-behavior:
-      auto !important;
   }
 }

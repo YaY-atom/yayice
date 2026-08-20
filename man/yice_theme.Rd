@@ -17,3 +17,6 @@ A bslib theme.
 \description{
 Creates the base Bootstrap theme for Yice Analytics applications.
 }
+\details{
+Colours are derived from the central \code{yice_colors()} palette.
+}
