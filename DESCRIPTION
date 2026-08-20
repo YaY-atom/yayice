@@ -9,3 +9,5 @@ Description: A personal R toolkit providing simplified and consistent
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
+URL: https://github.com/YaY-atom/yayice
+BugReports: https://github.com/YaY-atom/yayice/issues
