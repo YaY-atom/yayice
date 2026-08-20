@@ -5,9 +5,13 @@
 #' Colours are generated from the central `yice_colors()`
 #' palette and exposed to CSS as custom properties.
 #'
+#' During development, the Yice stylesheet is embedded directly
+#' into the page so that CSS changes are immediately visible
+#' without browser dependency caching.
+#'
 #' @param mode Either `"light"` or `"dark"`.
 #'
-#' @return HTML dependencies and Yice UI configuration.
+#' @return Yice Analytics UI dependencies and configuration.
 #'
 #' @export
 yice_dependencies <- function(
@@ -23,7 +27,7 @@ yice_dependencies <- function(
 
 
   # =========================================================
-  # CSS VARIABLES
+  # BUILD CSS VARIABLES FROM CENTRAL R PALETTE
   # =========================================================
 
   css_variables <- sprintf(
@@ -62,6 +66,7 @@ yice_dependencies <- function(
       --yice-light-border: %s;
 
       --yice-dark-background: %s;
+
       --yice-dark-surface: %s;
       --yice-dark-surface-2: %s;
       --yice-dark-surface-3: %s;
@@ -107,6 +112,7 @@ yice_dependencies <- function(
     col[["border"]],
 
     col[["background_dark"]],
+
     col[["surface_dark"]],
     col[["surface_dark_2"]],
     col[["surface_dark_3"]],
@@ -119,29 +125,35 @@ yice_dependencies <- function(
   )
 
 
+  # =========================================================
+  # LOCATE CURRENT YICE CSS
+  # =========================================================
+
+  css_file <- system.file(
+    "yice",
+    "yice.css",
+    package = "yayice"
+  )
+
+  if (!nzchar(css_file)) {
+
+    stop(
+      "Could not locate yayice CSS file.",
+      call. = FALSE
+    )
+  }
+
+
+  # =========================================================
+  # RETURN UI DEPENDENCIES
+  # =========================================================
+
   shiny::tagList(
 
-    htmltools::htmlDependency(
 
-      name = "yayice",
-
-      version = as.character(
-        utils::packageVersion("yayice")
-      ),
-
-      src = c(
-        href = "yice",
-        file = system.file(
-          "yice",
-          package = "yayice"
-        )
-      ),
-
-      stylesheet = "yice.css",
-
-      package = "yayice"
-    ),
-
+    # -------------------------------------------------------
+    # Dynamic colour variables
+    # -------------------------------------------------------
 
     shiny::tags$style(
       shiny::HTML(
@@ -149,6 +161,22 @@ yice_dependencies <- function(
       )
     ),
 
+
+    # -------------------------------------------------------
+    # Current Yice stylesheet
+    #
+    # Embedded directly to prevent stale browser caching
+    # while developing yayice.
+    # -------------------------------------------------------
+
+    shiny::includeCSS(
+      css_file
+    ),
+
+
+    # -------------------------------------------------------
+    # Theme mode
+    # -------------------------------------------------------
 
     shiny::tags$script(
 

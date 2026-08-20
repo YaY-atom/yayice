@@ -34,7 +34,7 @@
     var(--yice-light-background);
 
   --yice-surface:
-    rgba(255, 255, 255, 0.84);
+    rgba(255, 255, 255, 0.88);
 
   --yice-surface-solid:
     var(--yice-light-surface);
@@ -52,10 +52,10 @@
     var(--yice-light-border);
 
   --yice-shadow:
-    0 8px 30px rgba(20, 30, 55, 0.08);
+    0 8px 28px rgba(20, 30, 55, 0.07);
 
   --yice-shadow-hover:
-    0 18px 50px rgba(20, 30, 55, 0.15);
+    0 16px 42px rgba(20, 30, 55, 0.11);
 }
 
 
@@ -69,7 +69,7 @@
     var(--yice-dark-background);
 
   --yice-surface:
-    rgba(15, 19, 29, 0.72);
+    rgba(15, 19, 29, 0.78);
 
   --yice-surface-solid:
     var(--yice-dark-surface);
@@ -87,10 +87,10 @@
     var(--yice-dark-border);
 
   --yice-shadow:
-    0 8px 30px rgba(0, 0, 0, 0.32);
+    0 8px 28px rgba(0, 0, 0, 0.28);
 
   --yice-shadow-hover:
-    0 20px 60px rgba(0, 0, 0, 0.48);
+    0 18px 48px rgba(0, 0, 0, 0.38);
 }
 
 
@@ -125,10 +125,6 @@ body {
     grayscale;
 }
 
-
-/*
-   We deliberately remove bslib's visible page background.
-*/
 
 .html-fill-container,
 .bslib-page-fill {
@@ -187,20 +183,20 @@ body {
   background:
 
     radial-gradient(
-      circle 800px at 0% 0%,
-      rgba(0, 60, 255, 0.28),
-      transparent 65%
+      circle 760px at 0% 0%,
+      rgba(0, 60, 255, 0.16),
+      transparent 66%
     ),
 
     radial-gradient(
-      circle 700px at 100% 5%,
-      rgba(66, 252, 255, 0.18),
-      transparent 65%
+      circle 680px at 100% 5%,
+      rgba(66, 252, 255, 0.10),
+      transparent 66%
     ),
 
     radial-gradient(
-      circle 850px at 85% 100%,
-      rgba(213, 53, 217, 0.18),
+      circle 820px at 85% 100%,
+      rgba(213, 53, 217, 0.09),
       transparent 68%
     ),
 
@@ -231,14 +227,12 @@ body {
 }
 
 
-/* ---------------------------------------------------------
-   BLUE
-   --------------------------------------------------------- */
+/* BLUE */
 
 .yice-light-blue {
 
-  width: 700px;
-  height: 700px;
+  width: 680px;
+  height: 680px;
 
   left: -300px;
   top: -240px;
@@ -248,37 +242,35 @@ body {
     radial-gradient(
       circle,
 
-      rgba(0, 60, 255, 0.90) 0%,
+      rgba(0, 60, 255, 0.58) 0%,
 
-      rgba(0, 60, 255, 0.52) 22%,
+      rgba(0, 60, 255, 0.28) 24%,
 
-      rgba(0, 60, 255, 0.20) 45%,
+      rgba(0, 60, 255, 0.10) 46%,
 
       transparent 72%
     );
 
   filter:
-    blur(38px);
+    blur(48px);
 
-  opacity: 0.80;
+  opacity: 0.55;
 
   animation:
     yice-blue-drift
-    14s
+    16s
     ease-in-out
     infinite
     alternate;
 }
 
 
-/* ---------------------------------------------------------
-   CYAN
-   --------------------------------------------------------- */
+/* CYAN */
 
 .yice-light-cyan {
 
-  width: 650px;
-  height: 650px;
+  width: 620px;
+  height: 620px;
 
   right: -220px;
   top: 0;
@@ -288,37 +280,35 @@ body {
     radial-gradient(
       circle,
 
-      rgba(66, 252, 255, 0.82) 0%,
+      rgba(66, 252, 255, 0.48) 0%,
 
-      rgba(66, 252, 255, 0.46) 22%,
+      rgba(66, 252, 255, 0.22) 24%,
 
-      rgba(66, 252, 255, 0.17) 45%,
+      rgba(66, 252, 255, 0.08) 46%,
 
       transparent 72%
     );
 
   filter:
-    blur(42px);
+    blur(52px);
 
-  opacity: 0.78;
+  opacity: 0.50;
 
   animation:
     yice-cyan-drift
-    17s
+    18s
     ease-in-out
     infinite
     alternate;
 }
 
 
-/* ---------------------------------------------------------
-   PURPLE
-   --------------------------------------------------------- */
+/* PURPLE */
 
 .yice-light-purple {
 
-  width: 780px;
-  height: 780px;
+  width: 760px;
+  height: 760px;
 
   right: 4%;
   bottom: -420px;
@@ -328,32 +318,30 @@ body {
     radial-gradient(
       circle,
 
-      rgba(213, 53, 217, 0.78) 0%,
+      rgba(213, 53, 217, 0.46) 0%,
 
-      rgba(213, 53, 217, 0.42) 22%,
+      rgba(213, 53, 217, 0.20) 24%,
 
-      rgba(213, 53, 217, 0.16) 45%,
+      rgba(213, 53, 217, 0.07) 46%,
 
       transparent 72%
     );
 
   filter:
-    blur(48px);
+    blur(56px);
 
-  opacity: 0.72;
+  opacity: 0.46;
 
   animation:
     yice-purple-drift
-    20s
+    21s
     ease-in-out
     infinite
     alternate;
 }
 
 
-/* ---------------------------------------------------------
-   CENTER
-   --------------------------------------------------------- */
+/* CENTER */
 
 .yice-light-center {
 
@@ -368,23 +356,23 @@ body {
     radial-gradient(
       circle,
 
-      rgba(66, 252, 255, 0.19),
+      rgba(66, 252, 255, 0.10),
 
-      rgba(213, 53, 217, 0.11) 38%,
+      rgba(213, 53, 217, 0.06) 38%,
 
-      rgba(0, 60, 255, 0.06) 55%,
+      rgba(0, 60, 255, 0.035) 55%,
 
       transparent 72%
     );
 
   filter:
-    blur(55px);
+    blur(64px);
 
-  opacity: 0.75;
+  opacity: 0.48;
 
   animation:
     yice-center-drift
-    23s
+    24s
     ease-in-out
     infinite
     alternate;
@@ -465,8 +453,8 @@ a:hover {
     var(--yice-cyan-soft);
 
   text-shadow:
-    0 0 14px
-    rgba(66, 252, 255, 0.32);
+    0 0 10px
+    rgba(66, 252, 255, 0.18);
 }
 
 
@@ -509,12 +497,12 @@ a:hover {
   filter:
 
     drop-shadow(
-      0 0 14px rgba(66, 252, 255, 0.24)
+      0 0 10px rgba(66, 252, 255, 0.14)
     );
 
   animation:
     yice-title-flow
-    6s
+    7s
     ease-in-out
     infinite
     alternate;
@@ -547,12 +535,12 @@ a:hover {
     var(--yice-shadow);
 
   backdrop-filter:
-    blur(22px)
-    saturate(145%);
+    blur(20px)
+    saturate(135%);
 
   -webkit-backdrop-filter:
-    blur(22px)
-    saturate(145%);
+    blur(20px)
+    saturate(135%);
 
   transition:
 
@@ -613,9 +601,11 @@ a:hover {
   background-size:
     220% 100%;
 
+  opacity: 0.72;
+
   animation:
     yice-neon-line
-    5s
+    6s
     linear
     infinite;
 }
@@ -631,8 +621,8 @@ a:hover {
 
   position: absolute;
 
-  width: 340px;
-  height: 340px;
+  width: 320px;
+  height: 320px;
 
   top: -210px;
   right: -160px;
@@ -650,18 +640,17 @@ a:hover {
     radial-gradient(
       circle,
 
-      rgba(66, 252, 255, 0.20),
+      rgba(66, 252, 255, 0.12),
 
-      rgba(213, 53, 217, 0.11) 40%,
+      rgba(213, 53, 217, 0.06) 40%,
 
       transparent 72%
     );
 
   filter:
-    blur(18px);
+    blur(22px);
 
-  opacity:
-    0.48;
+  opacity: 0.30;
 
   transition:
 
@@ -682,49 +671,51 @@ a:hover {
 .yice-card:hover {
 
   transform:
-    translateY(-6px)
-    scale(1.004);
+    translateY(-4px)
+    scale(1.002);
 
   border-color:
-    rgba(66, 252, 255, 0.48);
+    rgba(66, 252, 255, 0.28);
 
   box-shadow:
 
     var(--yice-shadow-hover),
 
-    0 0 18px
-    rgba(0, 60, 255, 0.22),
+    0 0 12px
+    rgba(0, 60, 255, 0.12),
 
-    0 0 38px
-    rgba(66, 252, 255, 0.18),
+    0 0 26px
+    rgba(66, 252, 255, 0.09),
 
-    0 0 60px
-    rgba(213, 53, 217, 0.13);
+    0 0 42px
+    rgba(213, 53, 217, 0.06);
 }
 
 
 .yice-card:hover::before {
 
+  opacity: 0.95;
+
   box-shadow:
 
-    0 0 10px
-    rgba(0, 60, 255, 0.70),
+    0 0 7px
+    rgba(0, 60, 255, 0.38),
 
-    0 0 20px
-    rgba(66, 252, 255, 0.55),
+    0 0 14px
+    rgba(66, 252, 255, 0.26),
 
-    0 0 34px
-    rgba(213, 53, 217, 0.32);
+    0 0 22px
+    rgba(213, 53, 217, 0.16);
 }
 
 
 .yice-card:hover::after {
 
-  opacity: 1;
+  opacity: 0.60;
 
   transform:
-    scale(1.30)
-    translate(-10px, 20px);
+    scale(1.18)
+    translate(-8px, 15px);
 }
 
 
@@ -803,7 +794,7 @@ a:hover {
   top: -40%;
   left: -45%;
 
-  width: 35%;
+  width: 32%;
   height: 180%;
 
   pointer-events: none;
@@ -817,11 +808,11 @@ a:hover {
 
       transparent,
 
-      rgba(66, 252, 255, 0.05),
+      rgba(66, 252, 255, 0.03),
 
-      rgba(255, 255, 255, 0.24),
+      rgba(255, 255, 255, 0.14),
 
-      rgba(213, 53, 217, 0.13),
+      rgba(213, 53, 217, 0.07),
 
       transparent
     );
@@ -845,7 +836,7 @@ a:hover {
 
   left: 120%;
 
-  opacity: 1;
+  opacity: 0.65;
 }
 
 
@@ -880,7 +871,7 @@ a:hover {
 
   border:
     1px solid
-    rgba(66, 252, 255, 0.30);
+    rgba(66, 252, 255, 0.20);
 
   background:
 
@@ -899,8 +890,8 @@ a:hover {
 
   box-shadow:
 
-    0 5px 18px
-    rgba(0, 60, 255, 0.30);
+    0 4px 14px
+    rgba(0, 60, 255, 0.20);
 
   transition:
 
@@ -924,21 +915,29 @@ a:hover {
     white;
 
   transform:
-    translateY(-2px);
+    translateY(-1px);
 
   background-position:
     100% 0;
 
   box-shadow:
 
-    0 8px 24px
-    rgba(0, 60, 255, 0.36),
+    0 6px 18px
+    rgba(0, 60, 255, 0.24),
 
-    0 0 20px
-    rgba(66, 252, 255, 0.28),
+    0 0 12px
+    rgba(66, 252, 255, 0.14),
 
-    0 0 38px
-    rgba(213, 53, 217, 0.20);
+    0 0 22px
+    rgba(213, 53, 217, 0.10);
+}
+
+
+.btn-primary:active {
+
+  transform:
+    translateY(0)
+    scale(0.98);
 }
 
 
@@ -978,7 +977,7 @@ a:hover {
 .form-select:hover {
 
   border-color:
-    rgba(213, 53, 217, 0.38);
+    rgba(213, 53, 217, 0.22);
 }
 
 
@@ -996,14 +995,14 @@ a:hover {
 
   box-shadow:
 
-    0 0 0 0.16rem
-    rgba(66, 252, 255, 0.08),
+    0 0 0 0.14rem
+    rgba(66, 252, 255, 0.05),
 
-    0 0 16px
-    rgba(66, 252, 255, 0.26),
+    0 0 10px
+    rgba(66, 252, 255, 0.14),
 
-    0 0 30px
-    rgba(213, 53, 217, 0.15);
+    0 0 20px
+    rgba(213, 53, 217, 0.08);
 }
 
 
@@ -1044,8 +1043,8 @@ a:hover {
 
   text-shadow:
 
-    0 0 12px
-    rgba(66, 252, 255, 0.35);
+    0 0 8px
+    rgba(66, 252, 255, 0.20);
 }
 
 
@@ -1106,14 +1105,14 @@ a:hover {
 
   box-shadow:
 
-    0 0 8px
-    rgba(0, 60, 255, 0.70),
+    0 0 6px
+    rgba(0, 60, 255, 0.38),
+
+    0 0 10px
+    rgba(66, 252, 255, 0.30),
 
     0 0 16px
-    rgba(66, 252, 255, 0.58),
-
-    0 0 28px
-    rgba(213, 53, 217, 0.35);
+    rgba(213, 53, 217, 0.18);
 }
 
 
@@ -1153,15 +1152,15 @@ a:hover {
 
   box-shadow:
 
-    0 0 8px
-    var(--yice-cyan),
+    0 0 6px
+    rgba(66, 252, 255, 0.70),
 
-    0 0 18px
-    rgba(66, 252, 255, 0.50);
+    0 0 12px
+    rgba(66, 252, 255, 0.30);
 
   animation:
     yice-status-pulse
-    2s
+    2.4s
     ease-in-out
     infinite;
 }
@@ -1178,8 +1177,8 @@ a:hover {
     opacity: 0;
 
     transform:
-      translateY(12px)
-      scale(0.995);
+      translateY(10px)
+      scale(0.996);
   }
 
   to {
@@ -1226,10 +1225,10 @@ a:hover {
   0%,
   100% {
 
-    opacity: 0.60;
+    opacity: 0.62;
 
     transform:
-      scale(0.88);
+      scale(0.92);
   }
 
   50% {
@@ -1237,7 +1236,7 @@ a:hover {
     opacity: 1;
 
     transform:
-      scale(1.12);
+      scale(1.07);
   }
 }
 
@@ -1254,8 +1253,8 @@ a:hover {
   to {
 
     transform:
-      translate3d(120px, 80px, 0)
-      scale(1.16);
+      translate3d(90px, 60px, 0)
+      scale(1.10);
   }
 }
 
@@ -1266,14 +1265,14 @@ a:hover {
 
     transform:
       translate3d(0, 0, 0)
-      scale(0.96);
+      scale(0.97);
   }
 
   to {
 
     transform:
-      translate3d(-150px, 110px, 0)
-      scale(1.18);
+      translate3d(-110px, 85px, 0)
+      scale(1.12);
   }
 }
 
@@ -1290,8 +1289,8 @@ a:hover {
   to {
 
     transform:
-      translate3d(-130px, -100px, 0)
-      scale(1.22);
+      translate3d(-95px, -75px, 0)
+      scale(1.14);
   }
 }
 
@@ -1301,19 +1300,19 @@ a:hover {
   from {
 
     transform:
-      translate3d(-60px, 0, 0)
-      scale(0.90);
+      translate3d(-40px, 0, 0)
+      scale(0.94);
 
-    opacity: 0.50;
+    opacity: 0.38;
   }
 
   to {
 
     transform:
-      translate3d(130px, 90px, 0)
-      scale(1.25);
+      translate3d(90px, 65px, 0)
+      scale(1.14);
 
-    opacity: 0.90;
+    opacity: 0.58;
   }
 }
 

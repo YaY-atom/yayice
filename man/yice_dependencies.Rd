@@ -10,7 +10,7 @@ yice_dependencies(mode = getOption("yayice.mode", "dark"))
 \item{mode}{Either \code{"light"} or \code{"dark"}.}
 }
 \value{
-HTML dependencies and Yice UI configuration.
+Yice Analytics UI dependencies and configuration.
 }
 \description{
 Adds the visual design system used by yayice UI components.
@@ -18,4 +18,8 @@ Adds the visual design system used by yayice UI components.
 \details{
 Colours are generated from the central \code{yice_colors()}
 palette and exposed to CSS as custom properties.
+
+During development, the Yice stylesheet is embedded directly
+into the page so that CSS changes are immediately visible
+without browser dependency caching.
 }
