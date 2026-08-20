@@ -1,29 +1,36 @@
 #' Create the Yice Analytics UI theme
 #'
-#' Creates a Bootstrap 5 theme using the current yayice
-#' design options.
+#' Creates the base Bootstrap theme for Yice Analytics applications.
 #'
-#' @param mode Either `"light"` or `"dark"`.
-#' @param primary Primary accent colour.
+#' @param mode UI colour mode. Either `"light"` or `"dark"`.
+#' @param primary Optional primary brand colour.
 #'
-#' @return A `bslib::bs_theme()` object.
+#' @return A bslib theme.
 #'
 #' @export
 yice_theme <- function(
     mode = getOption("yayice.mode", "light"),
-    primary = getOption("yayice.primary", "#003CFF")
+    primary = NULL
 ) {
 
   mode <- match.arg(mode, c("light", "dark"))
 
+  col <- yice_colors()
+
+  if (is.null(primary)) {
+    primary <- col[["primary"]]
+  }
+
   if (mode == "light") {
-    bg <- "#FFFFFF"
-    fg <- "#18181B"
-    secondary <- "#6B7280"
+
+    bg <- col[["background"]]
+    fg <- col[["text"]]
+
   } else {
-    bg <- "#111318"
-    fg <- "#F5F5F5"
-    secondary <- "#A1A1AA"
+
+    bg <- col[["background_dark"]]
+    fg <- col[["text_dark"]]
+
   }
 
   bslib::bs_theme(
@@ -34,12 +41,12 @@ yice_theme <- function(
     fg = fg,
 
     primary = primary,
-    secondary = secondary,
+    secondary = col[["text_muted"]],
 
-    success = "#00C000",
-    info = "#42FCFF",
-    warning = "#FCA600",
-    danger = "#FF0000",
+    success = col[["success"]],
+    warning = col[["warning"]],
+    danger = col[["danger"]],
+    info = col[["info"]],
 
     base_font = bslib::font_collection(
       "Inter",
@@ -57,18 +64,13 @@ yice_theme <- function(
 
     code_font = bslib::font_collection(
       "JetBrains Mono",
+      "Cascadia Code",
       "Consolas",
       "monospace"
     ),
 
-    "border-radius" = getOption(
-      "yayice.radius",
-      "0.75rem"
-    ),
-
-    "card-border-radius" = getOption(
-      "yayice.radius",
-      "0.75rem"
-    )
+    "border-radius" = "0.75rem",
+    "border-radius-sm" = "0.5rem",
+    "border-radius-lg" = "1rem"
   )
 }

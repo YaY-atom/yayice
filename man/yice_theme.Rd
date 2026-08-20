@@ -15,9 +15,12 @@ yice_theme(
 \item{primary}{Primary accent colour.}
 }
 \value{
+A \code{bslib::bs_theme()} object.#' Create the Yice Analytics UI theme
+
+Creates a Bootstrap 5 theme using Yice Analytics design tokens.
+
 A \code{bslib::bs_theme()} object.
 }
 \description{
-Creates a Bootstrap 5 theme using the current yayice
-design options.
+Creates a Bootstrap 5 theme using Yice Analytics design tokens.
 }
