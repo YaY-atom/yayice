@@ -1,0 +1,11 @@
+Package: yayice
+Title: Yice Analytics R Toolkit
+Version: 0.0.0.9000
+Authors@R:
+    person("Yusuf Adni", "Yavuz", role = c("aut", "cre"))
+Description: A personal R toolkit providing simplified and consistent
+    functions for data analysis, visualization, scientific workflows,
+    Shiny development, and the Yice Analytics user interface system.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
