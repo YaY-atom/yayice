@@ -23,17 +23,17 @@ yice_theme <- function(
 
   if (mode == "light") {
 
-    bg <- col[["background"]]
-    fg <- col[["text"]]
+    bg <- "#F6F7FB"
+    fg <- "#17181C"
 
   } else {
 
-    bg <- col[["background_dark"]]
-    fg <- col[["text_dark"]]
+    bg <- "#07090F"
+    fg <- "#F5F7FF"
 
   }
 
-  bslib::bs_theme(
+  theme <- bslib::bs_theme(
     version = 5,
     preset = "bootstrap",
 
@@ -73,4 +73,8 @@ yice_theme <- function(
     "border-radius-sm" = "0.5rem",
     "border-radius-lg" = "1rem"
   )
+
+  attr(theme, "yice_mode") <- mode
+
+  theme
 }

@@ -4,23 +4,16 @@
 \alias{yice_theme}
 \title{Create the Yice Analytics UI theme}
 \usage{
-yice_theme(
-  mode = getOption("yayice.mode", "light"),
-  primary = getOption("yayice.primary", "#003CFF")
-)
+yice_theme(mode = getOption("yayice.mode", "light"), primary = NULL)
 }
 \arguments{
-\item{mode}{Either \code{"light"} or \code{"dark"}.}
+\item{mode}{UI colour mode. Either \code{"light"} or \code{"dark"}.}
 
-\item{primary}{Primary accent colour.}
+\item{primary}{Optional primary brand colour.}
 }
 \value{
-A \code{bslib::bs_theme()} object.#' Create the Yice Analytics UI theme
-
-Creates a Bootstrap 5 theme using Yice Analytics design tokens.
-
-A \code{bslib::bs_theme()} object.
+A bslib theme.
 }
 \description{
-Creates a Bootstrap 5 theme using Yice Analytics design tokens.
+Creates the base Bootstrap theme for Yice Analytics applications.
 }

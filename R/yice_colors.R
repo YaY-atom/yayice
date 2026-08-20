@@ -9,39 +9,39 @@ yice_colors <- function() {
 
   c(
     # Brand
-    primary        = "#003CFF",
-    primary_dark   = "#002BCC",
-    primary_light  = "#5477FF",
+    primary = "#003CFF",
+    primary_dark = "#002BCC",
+    primary_light = "#5477FF",
 
-    accent         = "#42FCFF",
-    accent_alt     = "#D535D9",
+    accent = "#42FCFF",
+    accent_alt = "#D535D9",
 
     # Light surfaces
-    background     = "#F6F7FB",
-    surface        = "#FFFFFF",
-    surface_soft   = "#F9FAFC",
+    background = "#F6F7FB",
+    surface = "#FFFFFF",
+    surface_soft = "#F9FAFC",
 
     # Dark surfaces
-    background_dark = "#0B0D12",
-    surface_dark    = "#12151C",
-    surface_dark_2  = "#181C25",
+    background_dark = "#07090F",
+    surface_dark = "#0F131D",
+    surface_dark_2 = "#121722",
 
     # Text
-    text           = "#17181C",
-    text_soft      = "#555B66",
-    text_muted     = "#828895",
+    text = "#17181C",
+    text_soft = "#555B66",
+    text_muted = "#828895",
 
-    text_dark      = "#F4F6FA",
-    text_dark_soft = "#B7BDC9",
+    text_dark = "#F5F7FF",
+    text_dark_soft = "#C2C8D6",
 
     # Semantic
-    success        = "#00C000",
-    warning        = "#FCA600",
-    danger         = "#FF3B45",
-    info           = "#42FCFF",
+    success = "#00C000",
+    warning = "#FCA600",
+    danger = "#FF3B45",
+    info = "#42FCFF",
 
     # Structure
-    border         = "#E5E8EF",
-    border_dark    = "#292E3A"
+    border = "#E5E8EF",
+    border_dark = "#292E3A"
   )
 }

@@ -2,13 +2,13 @@
 % Please edit documentation in R/yice_colors.R
 \name{yice_colors}
 \alias{yice_colors}
-\title{Yice Analytics color palette}
+\title{Yice Analytics colour palette}
 \usage{
 yice_colors()
 }
 \value{
-A named character vector of hexadecimal colors.
+A named character vector.
 }
 \description{
-Returns the core Yice Analytics color palette.
+Central colour definitions used throughout the yayice UI system.
 }

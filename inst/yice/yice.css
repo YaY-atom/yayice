@@ -4,9 +4,9 @@
    ========================================================= */
 
 
-/* ---------------------------------------------------------
-   DESIGN TOKENS
---------------------------------------------------------- */
+/* =========================================================
+   01. DESIGN TOKENS
+   ========================================================= */
 
 :root {
 
@@ -19,9 +19,21 @@
   --yice-accent-alt: #D535D9;
 
 
-  /* Surfaces */
+  /* Semantic */
+  --yice-success: #00C000;
+  --yice-warning: #FCA600;
+  --yice-danger: #FF3B45;
+  --yice-info: #42FCFF;
+
+
+  /* Light mode */
   --yice-background: #F6F7FB;
-  --yice-surface: #FFFFFF;
+
+  --yice-surface:
+    rgba(255, 255, 255, 0.88);
+
+  --yice-surface-solid: #FFFFFF;
+
   --yice-surface-soft: #F9FAFC;
 
 
@@ -32,38 +44,27 @@
 
 
   /* Structure */
-  --yice-border: rgba(25, 30, 40, 0.09);
-  --yice-border-strong: rgba(25, 30, 40, 0.15);
+  --yice-border:
+    rgba(25, 30, 40, 0.09);
+
+  --yice-border-strong:
+    rgba(25, 30, 40, 0.15);
 
 
   /* Radius */
   --yice-radius-xs: 0.35rem;
   --yice-radius-sm: 0.55rem;
-  --yice-radius-md: 0.8rem;
+  --yice-radius-md: 0.80rem;
   --yice-radius-lg: 1.05rem;
-  --yice-radius-xl: 1.4rem;
+  --yice-radius-xl: 1.40rem;
 
 
-  /* Shadow */
-  --yice-shadow-xs:
-    0 1px 3px rgba(12, 18, 30, 0.035);
-
+  /* Shadows */
   --yice-shadow-sm:
     0 3px 10px rgba(12, 18, 30, 0.05);
 
   --yice-shadow-md:
     0 10px 30px rgba(12, 18, 30, 0.08);
-
-  --yice-shadow-lg:
-    0 20px 55px rgba(12, 18, 30, 0.12);
-
-
-  /* Glow */
-  --yice-glow-primary:
-    0 8px 30px rgba(0, 60, 255, 0.18);
-
-  --yice-glow-accent:
-    0 8px 30px rgba(66, 252, 255, 0.15);
 
 
   /* Motion */
@@ -73,53 +74,214 @@
   --yice-ease-soft:
     cubic-bezier(0.4, 0, 0.2, 1);
 
-  --yice-fast:
-    140ms;
-
-  --yice-normal:
-    220ms;
-
-  --yice-slow:
-    420ms;
+  --yice-fast: 140ms;
+  --yice-normal: 220ms;
+  --yice-slow: 420ms;
 }
 
 
 /* =========================================================
-   APPLICATION
+   02. DARK MODE
+   ========================================================= */
+
+[data-yice-theme="dark"] {
+
+  --yice-background: #07090F;
+
+  --yice-surface:
+    rgba(15, 19, 29, 0.82);
+
+  --yice-surface-solid:
+    #0F131D;
+
+  --yice-surface-soft:
+    #121722;
+
+  --yice-text:
+    #F5F7FF;
+
+  --yice-text-soft:
+    #C2C8D6;
+
+  --yice-text-muted:
+    #818A9D;
+
+  --yice-border:
+    rgba(120, 150, 210, 0.13);
+
+  --yice-border-strong:
+    rgba(120, 160, 230, 0.22);
+
+  --yice-shadow-sm:
+    0 6px 20px
+    rgba(0, 0, 0, 0.28);
+
+  --yice-shadow-md:
+    0 16px 45px
+    rgba(0, 0, 0, 0.38);
+}
+
+
+/* =========================================================
+   03. DOCUMENT
    ========================================================= */
 
 html {
-  scroll-behavior: smooth;
+
+  scroll-behavior:
+    smooth;
 }
 
 
 body {
 
-  color: var(--yice-text);
+  position:
+    relative;
+
+  min-height:
+    100vh;
+
+  overflow-x:
+    hidden;
+
+  color:
+    var(--yice-text);
 
   background:
-    radial-gradient(
-      circle at 10% -20%,
-      rgba(0, 60, 255, 0.055),
-      transparent 32rem
-    ),
-    radial-gradient(
-      circle at 100% 10%,
-      rgba(66, 252, 255, 0.035),
-      transparent 28rem
-    ),
     var(--yice-background);
 
   font-feature-settings:
     "kern" 1,
     "liga" 1;
 
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing:
+    antialiased;
+
+  -moz-osx-font-smoothing:
+    grayscale;
 }
 
 
 /* =========================================================
-   TYPOGRAPHY
+   04. AMBIENT NEON BACKGROUND
+   ========================================================= */
+
+body::before {
+
+  content: "";
+
+  position:
+    fixed;
+
+  inset:
+    0;
+
+  z-index:
+    0;
+
+  pointer-events:
+    none;
+
+  background:
+
+    radial-gradient(
+      circle 420px at 12% 16%,
+      rgba(0, 60, 255, 0.34),
+      rgba(0, 60, 255, 0.12) 35%,
+      transparent 72%
+    ),
+
+    radial-gradient(
+      circle 380px at 88% 22%,
+      rgba(66, 252, 255, 0.20),
+      rgba(66, 252, 255, 0.07) 40%,
+      transparent 72%
+    ),
+
+    radial-gradient(
+      circle 460px at 68% 88%,
+      rgba(213, 53, 217, 0.18),
+      rgba(213, 53, 217, 0.055) 42%,
+      transparent 72%
+    );
+
+  filter:
+    blur(18px);
+
+  opacity:
+    0.95;
+
+  animation:
+    yice-ambient-drift
+    14s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+
+body::after {
+
+  content: "";
+
+  position:
+    fixed;
+
+  width:
+    34rem;
+
+  height:
+    34rem;
+
+  left:
+    42%;
+
+  top:
+    18%;
+
+  z-index:
+    0;
+
+  pointer-events:
+    none;
+
+  border-radius:
+    50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(0, 60, 255, 0.11),
+      rgba(66, 252, 255, 0.045) 35%,
+      transparent 70%
+    );
+
+  filter:
+    blur(35px);
+
+  animation:
+    yice-floating-glow
+    18s
+    var(--yice-ease)
+    infinite
+    alternate;
+}
+
+
+/* Keep Shiny content above ambient lights */
+
+body > * {
+
+  position:
+    relative;
+
+  z-index:
+    1;
+}
+
+
+/* =========================================================
+   05. TYPOGRAPHY
    ========================================================= */
 
 h1,
@@ -129,48 +291,92 @@ h4,
 h5,
 h6 {
 
-  color: var(--yice-text);
+  color:
+    var(--yice-text);
 
-  font-weight: 700;
+  font-weight:
+    700;
 
-  letter-spacing: -0.025em;
+  letter-spacing:
+    -0.025em;
 }
 
 
 p {
-  color: var(--yice-text-soft);
+
+  color:
+    var(--yice-text-soft);
 }
 
 
 a {
 
-  color: var(--yice-primary);
+  color:
+    var(--yice-primary);
 
-  text-decoration: none;
+  text-decoration:
+    none;
 
   transition:
-    color var(--yice-fast) var(--yice-ease-soft);
+    color
+    var(--yice-fast)
+    var(--yice-ease-soft);
 }
 
 
 a:hover {
-  color: var(--yice-primary-dark);
+
+  color:
+    var(--yice-primary-light);
+}
+
+
+.yice-glow-title {
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--yice-primary),
+      #315FFF,
+      var(--yice-accent)
+    );
+
+  -webkit-background-clip:
+    text;
+
+  background-clip:
+    text;
+
+  color:
+    transparent;
+
+  text-shadow:
+    0 0 20px
+    rgba(0, 60, 255, 0.14);
 }
 
 
 /* =========================================================
-   YICE CARD
+   06. YICE CARD
    ========================================================= */
 
 .yice-card {
 
-  position: relative;
+  position:
+    relative;
+
+  isolation:
+    isolate;
+
+  overflow:
+    hidden;
 
   background:
-    rgba(255, 255, 255, 0.92);
+    var(--yice-surface);
 
   border:
-    1px solid var(--yice-border);
+    1px solid
+    var(--yice-border);
 
   border-radius:
     var(--yice-radius-lg);
@@ -178,14 +384,26 @@ a:hover {
   box-shadow:
     var(--yice-shadow-sm);
 
-  overflow: hidden;
+  backdrop-filter:
+    blur(18px)
+    saturate(125%);
 
-  isolation: isolate;
+  -webkit-backdrop-filter:
+    blur(18px)
+    saturate(125%);
 
   transition:
-    transform var(--yice-normal) var(--yice-ease),
-    box-shadow var(--yice-normal) var(--yice-ease),
-    border-color var(--yice-normal) var(--yice-ease);
+    transform
+    var(--yice-normal)
+    var(--yice-ease),
+
+    box-shadow
+    var(--yice-normal)
+    var(--yice-ease),
+
+    border-color
+    var(--yice-normal)
+    var(--yice-ease);
 
   animation:
     yice-enter
@@ -195,19 +413,32 @@ a:hover {
 }
 
 
-/* Brand highlight */
+/* Neon accent line */
 
 .yice-card::before {
 
   content: "";
 
-  position: absolute;
+  position:
+    absolute;
 
-  top: 0;
-  left: 0;
-  right: 0;
+  top:
+    0;
 
-  height: 2px;
+  left:
+    0;
+
+  right:
+    0;
+
+  height:
+    2px;
+
+  z-index:
+    2;
+
+  opacity:
+    0.9;
 
   background:
     linear-gradient(
@@ -216,83 +447,219 @@ a:hover {
       var(--yice-accent)
     );
 
-  opacity: 0.9;
+  transition:
+    opacity
+    var(--yice-normal)
+    var(--yice-ease),
 
-  z-index: 2;
+    box-shadow
+    var(--yice-normal)
+    var(--yice-ease);
 }
 
 
-/* Soft internal glow */
+/* Internal card glow */
 
 .yice-card::after {
 
   content: "";
 
-  position: absolute;
+  position:
+    absolute;
 
-  width: 12rem;
-  height: 12rem;
+  width:
+    18rem;
 
-  top: -8rem;
-  right: -6rem;
+  height:
+    18rem;
 
-  border-radius: 50%;
+  top:
+    -11rem;
+
+  right:
+    -9rem;
+
+  border-radius:
+    50%;
+
+  pointer-events:
+    none;
+
+  z-index:
+    -1;
 
   background:
     radial-gradient(
       circle,
-      rgba(0, 60, 255, 0.07),
+      rgba(66, 252, 255, 0.12),
+      rgba(0, 60, 255, 0.07) 32%,
       transparent 70%
     );
 
-  pointer-events: none;
+  filter:
+    blur(8px);
 
-  z-index: -1;
+  opacity:
+    0.45;
 
   transition:
-    opacity var(--yice-normal) var(--yice-ease);
+    opacity
+    var(--yice-normal)
+    var(--yice-ease),
+
+    transform
+    var(--yice-slow)
+    var(--yice-ease);
 }
 
+
+/* Hover */
 
 .yice-card:hover {
 
   transform:
-    translateY(-3px);
+    translateY(-5px)
+    scale(1.003);
 
   border-color:
-    rgba(0, 60, 255, 0.16);
+    rgba(66, 252, 255, 0.34);
 
   box-shadow:
-    var(--yice-shadow-md);
+
+    var(--yice-shadow-md),
+
+    0 0 0 1px
+    rgba(66, 252, 255, 0.08),
+
+    0 0 18px
+    rgba(0, 60, 255, 0.18),
+
+    0 0 42px
+    rgba(66, 252, 255, 0.10),
+
+    0 0 70px
+    rgba(213, 53, 217, 0.035);
+}
+
+
+.yice-card:hover::before {
+
+  opacity:
+    1;
+
+  box-shadow:
+    0 0 8px
+    rgba(0, 60, 255, 0.50),
+
+    0 0 18px
+    rgba(66, 252, 255, 0.28);
 }
 
 
 .yice-card:hover::after {
-  opacity: 1;
+
+  opacity:
+    0.95;
+
+  transform:
+    scale(1.20);
 }
 
 
-/* Card header */
+/* Header */
 
 .yice-card .card-header {
+
+  position:
+    relative;
+
+  z-index:
+    1;
+
+  padding:
+    1.15rem 1.35rem;
 
   background:
     transparent;
 
   border-bottom:
-    1px solid var(--yice-border);
-
-  padding:
-    1.15rem 1.35rem;
+    1px solid
+    var(--yice-border);
 }
 
 
-/* Card body */
+/* Body */
 
 .yice-card .card-body {
 
+  position:
+    relative;
+
+  z-index:
+    1;
+
   padding:
     1.35rem;
+}
+
+
+/* Moving light reflection */
+
+.yice-card .card-body::after {
+
+  content: "";
+
+  position:
+    absolute;
+
+  top:
+    -30%;
+
+  left:
+    -40%;
+
+  width:
+    30%;
+
+  height:
+    160%;
+
+  pointer-events:
+    none;
+
+  opacity:
+    0;
+
+  background:
+    linear-gradient(
+      105deg,
+      transparent,
+      rgba(255, 255, 255, 0.24),
+      rgba(66, 252, 255, 0.08),
+      transparent
+    );
+
+  transform:
+    rotate(8deg);
+
+  transition:
+    left
+    650ms
+    var(--yice-ease),
+
+    opacity
+    250ms
+    ease;
+}
+
+
+.yice-card:hover .card-body::after {
+
+  left:
+    115%;
+
+  opacity:
+    0.75;
 }
 
 
@@ -336,13 +703,19 @@ a:hover {
 
 
 /* =========================================================
-   BUTTONS
+   07. BUTTONS
    ========================================================= */
 
 .btn {
 
+  position:
+    relative;
+
   border-radius:
     var(--yice-radius-md);
+
+  padding:
+    0.58rem 1rem;
 
   font-weight:
     600;
@@ -350,14 +723,18 @@ a:hover {
   letter-spacing:
     -0.01em;
 
-  padding:
-    0.58rem 1rem;
-
   transition:
-    transform var(--yice-fast) var(--yice-ease),
-    box-shadow var(--yice-normal) var(--yice-ease),
-    border-color var(--yice-fast) var(--yice-ease),
-    background-color var(--yice-fast) var(--yice-ease);
+    transform
+    var(--yice-fast)
+    var(--yice-ease),
+
+    box-shadow
+    var(--yice-normal)
+    var(--yice-ease),
+
+    border-color
+    var(--yice-fast)
+    var(--yice-ease);
 }
 
 
@@ -378,31 +755,95 @@ a:hover {
 
 .btn-primary {
 
-  border-color:
-    var(--yice-primary);
+  overflow:
+    hidden;
+
+  isolation:
+    isolate;
+
+  color:
+    #FFFFFF;
+
+  border:
+    1px solid
+    rgba(80, 120, 255, 0.45);
 
   background:
     linear-gradient(
       135deg,
-      var(--yice-primary),
-      #174FFF
+      var(--yice-primary) 0%,
+      #174FFF 60%,
+      #376AFF 100%
     );
 
   box-shadow:
-    0 5px 15px
-    rgba(0, 60, 255, 0.17);
+    0 5px 16px
+    rgba(0, 60, 255, 0.20);
+}
+
+
+.btn-primary::before {
+
+  content: "";
+
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  z-index:
+    -1;
+
+  opacity:
+    0;
+
+  background:
+    radial-gradient(
+      circle at 50% 120%,
+      rgba(66, 252, 255, 0.28),
+      transparent 60%
+    );
+
+  transition:
+    opacity
+    var(--yice-normal)
+    var(--yice-ease);
 }
 
 
 .btn-primary:hover {
 
+  color:
+    #FFFFFF;
+
+  transform:
+    translateY(-2px);
+
+  border-color:
+    rgba(66, 252, 255, 0.55);
+
   box-shadow:
-    var(--yice-glow-primary);
+    0 7px 20px
+    rgba(0, 60, 255, 0.26),
+
+    0 0 16px
+    rgba(66, 252, 255, 0.16),
+
+    0 0 34px
+    rgba(0, 60, 255, 0.10);
+}
+
+
+.btn-primary:hover::before {
+
+  opacity:
+    1;
 }
 
 
 /* =========================================================
-   INPUTS
+   08. INPUTS
    ========================================================= */
 
 .form-control,
@@ -411,11 +852,15 @@ a:hover {
   min-height:
     2.55rem;
 
+  color:
+    var(--yice-text);
+
   background:
-    rgba(255,255,255,0.85);
+    var(--yice-surface);
 
   border:
-    1px solid var(--yice-border-strong);
+    1px solid
+    var(--yice-border-strong);
 
   border-radius:
     var(--yice-radius-md);
@@ -424,9 +869,17 @@ a:hover {
     none;
 
   transition:
-    border-color var(--yice-fast) var(--yice-ease),
-    box-shadow var(--yice-fast) var(--yice-ease),
-    background-color var(--yice-fast) var(--yice-ease);
+    border-color
+    var(--yice-fast)
+    var(--yice-ease),
+
+    box-shadow
+    var(--yice-fast)
+    var(--yice-ease),
+
+    background-color
+    var(--yice-fast)
+    var(--yice-ease);
 }
 
 
@@ -434,33 +887,59 @@ a:hover {
 .form-select:hover {
 
   border-color:
-    rgba(0, 60, 255, 0.25);
+    rgba(0, 60, 255, 0.28);
 }
 
 
 .form-control:focus,
 .form-select:focus {
 
+  color:
+    var(--yice-text);
+
   background:
-    var(--yice-surface);
+    var(--yice-surface-solid);
 
   border-color:
-    rgba(0, 60, 255, 0.55);
+    rgba(66, 252, 255, 0.72);
 
   box-shadow:
-    0 0 0 0.2rem
-    rgba(0, 60, 255, 0.09);
+    0 0 0 0.18rem
+    rgba(0, 60, 255, 0.08),
+
+    0 0 12px
+    rgba(66, 252, 255, 0.13),
+
+    0 0 24px
+    rgba(0, 60, 255, 0.07);
+}
+
+
+/* Labels */
+
+.form-label,
+.control-label {
+
+  color:
+    var(--yice-text-soft);
+
+  font-size:
+    0.875rem;
+
+  font-weight:
+    600;
 }
 
 
 /* =========================================================
-   TABS
+   09. TABS
    ========================================================= */
 
 .nav-tabs {
 
   border-bottom:
-    1px solid var(--yice-border);
+    1px solid
+    var(--yice-border);
 }
 
 
@@ -485,7 +964,13 @@ a:hover {
     0.75rem 1rem;
 
   transition:
-    color var(--yice-fast) var(--yice-ease);
+    color
+    var(--yice-fast)
+    var(--yice-ease),
+
+    text-shadow
+    var(--yice-fast)
+    var(--yice-ease);
 }
 
 
@@ -516,25 +1001,41 @@ a:hover {
     );
 
   transition:
-    left var(--yice-normal) var(--yice-ease),
-    right var(--yice-normal) var(--yice-ease);
+    left
+    var(--yice-normal)
+    var(--yice-ease),
+
+    right
+    var(--yice-normal)
+    var(--yice-ease),
+
+    box-shadow
+    var(--yice-normal)
+    var(--yice-ease);
 }
 
 
 .nav-tabs .nav-link:hover {
 
   color:
-    var(--yice-text);
+    var(--yice-primary-light);
+
+  text-shadow:
+    0 0 12px
+    rgba(0, 60, 255, 0.18);
 }
 
 
 .nav-tabs .nav-link.active {
 
   color:
-    var(--yice-primary);
+    var(--yice-accent);
 
   background:
     transparent;
+
+  border:
+    none;
 }
 
 
@@ -545,11 +1046,18 @@ a:hover {
 
   right:
     0.7rem;
+
+  box-shadow:
+    0 0 7px
+    rgba(0, 60, 255, 0.55),
+
+    0 0 14px
+    rgba(66, 252, 255, 0.35);
 }
 
 
 /* =========================================================
-   TABLES
+   10. TABLES
    ========================================================= */
 
 .table {
@@ -568,7 +1076,7 @@ a:hover {
     var(--yice-text-muted);
 
   font-size:
-    0.8rem;
+    0.80rem;
 
   text-transform:
     uppercase;
@@ -585,8 +1093,73 @@ a:hover {
 }
 
 
+.table > tbody > tr {
+
+  transition:
+    background-color
+    var(--yice-fast)
+    var(--yice-ease);
+}
+
+
+.table > tbody > tr:hover {
+
+  background:
+    rgba(66, 252, 255, 0.035);
+}
+
+
 /* =========================================================
-   SELECTION
+   11. STATUS
+   ========================================================= */
+
+.yice-status {
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  gap:
+    0.45rem;
+}
+
+
+.yice-status-dot {
+
+  display:
+    inline-block;
+
+  width:
+    0.55rem;
+
+  height:
+    0.55rem;
+
+  border-radius:
+    50%;
+
+  background:
+    var(--yice-accent);
+
+  box-shadow:
+    0 0 7px
+    rgba(66, 252, 255, 0.55),
+
+    0 0 16px
+    rgba(66, 252, 255, 0.25);
+
+  animation:
+    yice-status-pulse
+    2s
+    ease-in-out
+    infinite;
+}
+
+
+/* =========================================================
+   12. SELECTION
    ========================================================= */
 
 ::selection {
@@ -600,7 +1173,7 @@ a:hover {
 
 
 /* =========================================================
-   SCROLLBAR
+   13. SCROLLBAR
    ========================================================= */
 
 ::-webkit-scrollbar {
@@ -626,7 +1199,8 @@ a:hover {
     rgba(90, 98, 112, 0.25);
 
   border:
-    3px solid transparent;
+    3px solid
+    transparent;
 
   border-radius:
     999px;
@@ -639,10 +1213,11 @@ a:hover {
 ::-webkit-scrollbar-thumb:hover {
 
   background:
-    rgba(0, 60, 255, 0.38);
+    rgba(66, 252, 255, 0.35);
 
   border:
-    3px solid transparent;
+    3px solid
+    transparent;
 
   background-clip:
     padding-box;
@@ -650,7 +1225,22 @@ a:hover {
 
 
 /* =========================================================
-   ANIMATIONS
+   14. FOCUS
+   ========================================================= */
+
+:focus-visible {
+
+  outline:
+    2px solid
+    rgba(66, 252, 255, 0.80);
+
+  outline-offset:
+    3px;
+}
+
+
+/* =========================================================
+   15. ANIMATIONS
    ========================================================= */
 
 @keyframes yice-enter {
@@ -663,7 +1253,6 @@ a:hover {
     transform:
       translateY(12px)
       scale(0.995);
-
   }
 
   to {
@@ -674,26 +1263,11 @@ a:hover {
     transform:
       translateY(0)
       scale(1);
-
   }
-
 }
 
 
-@keyframes yice-fade {
-
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-
-}
-
-
-@keyframes yice-pulse {
+@keyframes yice-status-pulse {
 
   0%,
   100% {
@@ -701,6 +1275,8 @@ a:hover {
     opacity:
       0.65;
 
+    transform:
+      scale(0.90);
   }
 
   50% {
@@ -708,35 +1284,76 @@ a:hover {
     opacity:
       1;
 
+    transform:
+      scale(1.08);
+  }
+}
+
+
+@keyframes yice-ambient-drift {
+
+  0% {
+
+    transform:
+      scale(1)
+      translate3d(0, 0, 0);
   }
 
+  100% {
+
+    transform:
+      scale(1.08)
+      translate3d(1.5%, -1%, 0);
+  }
+}
+
+
+@keyframes yice-floating-glow {
+
+  0% {
+
+    transform:
+      translate3d(-10%, 0, 0)
+      scale(0.90);
+
+    opacity:
+      0.50;
+  }
+
+  50% {
+
+    opacity:
+      0.90;
+  }
+
+  100% {
+
+    transform:
+      translate3d(18%, 10%, 0)
+      scale(1.12);
+
+    opacity:
+      0.65;
+  }
 }
 
 
 /* =========================================================
-   ACCESSIBILITY
+   16. REDUCED MOTION
    ========================================================= */
 
-:focus-visible {
+@media (prefers-reduced-motion: reduce) {
 
-  outline:
-    2px solid
-    rgba(0, 60, 255, 0.75);
+  html {
 
-  outline-offset:
-    3px;
-}
+    scroll-behavior:
+      auto;
+  }
 
-
-@media
-(prefers-reduced-motion: reduce) {
 
   *,
   *::before,
   *::after {
-
-    scroll-behavior:
-      auto !important;
 
     animation-duration:
       0.01ms !important;
@@ -747,6 +1364,7 @@ a:hover {
     transition-duration:
       0.01ms !important;
 
+    scroll-behavior:
+      auto !important;
   }
-
 }
