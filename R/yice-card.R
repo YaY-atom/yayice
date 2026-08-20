@@ -25,6 +25,7 @@ yice_card <- function(
   if (!is.null(title) || !is.null(description)) {
 
     header <- bslib::card_header(
+
       shiny::div(
         class = "yice-card-header",
 
@@ -45,11 +46,21 @@ yice_card <- function(
     )
   }
 
-  bslib::card(
-    class = paste(
-      "yice-card",
+
+  card_class <- "yice-card"
+
+  if (!is.null(class) && nzchar(class)) {
+    card_class <- paste(
+      card_class,
       class
-    ),
+    )
+  }
+
+
+  bslib::card(
+
+    class = card_class,
+
     full_screen = full_screen,
 
     header,
